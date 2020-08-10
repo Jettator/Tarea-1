@@ -1,4 +1,0 @@
-Orientacion Objetos
-Funcional
-Estructurado
-Declarativo
