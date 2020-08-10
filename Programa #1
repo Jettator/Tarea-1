@@ -1,0 +1,43 @@
+using System;
+using System.IO;
+using System.Linq;
+
+namespace ConsoleApp3
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //Directorios
+            string path = @"D:\archivos txt\nombres.txt";
+            string path2 = @"D:\archivos txt\grupos.txt";
+            string path3 = @"D:\archivos txt\temas.txt";
+
+            //Contenidos
+            string[] nombres = File.ReadAllLines(path).ToArray();
+            string[] grupos = File.ReadAllLines(path2).ToArray();
+            string[] temas = File.ReadAllLines(path3).ToArray();
+            //Contador
+            int contador = 0;
+            //Random
+            var random = new Random();
+            string[] nombresA = nombres.OrderBy(x => random.Next()).ToArray();
+            string[] temasA = temas.OrderBy(x => random.Next()).ToArray();
+
+            //Imprimir por pantalla los grupos, temas y personas
+            for (int i = 0, x = 0; i < 4; i++, x++)
+            {
+                Console.WriteLine(
+                $"----------------------------\n" +
+                $"{grupos[x]} - Tema:{temasA[i]}\n" +
+                $"----------------------------");
+                for (int j = 0; j < 5; j++, contador++)
+                {
+                    Console.WriteLine(nombresA[contador]);
+                }
+            }
+
+            Console.ReadKey();
+        }
+    }
+}
